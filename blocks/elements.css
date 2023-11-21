@@ -1,0 +1,67 @@
+.elements {
+    display: flex;
+    justify-content: center;
+}
+
+.elements__container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(3, 282px);
+    grid-gap: 17px;
+}
+
+.element {
+    width: 282px;
+    height: 361px;
+    background-color: #fff;
+    overflow: hidden;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 282px 1fr;
+    grid-template-columns: 1fr 36px;
+    grid-template-areas:
+    "image image"
+    "title button"
+    ;
+}
+
+.element__image {
+    grid-area: image;
+    width: 282px;
+    height: auto;
+}
+
+.element__title {
+    grid-area: title;
+    color: #000;
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    margin-left: 15px;
+    align-self: center;
+}
+
+.element__like-button {
+    grid-area: button;
+    margin-right: 15px;
+    align-self: center;
+    transition: 0.2s linear;
+}
+
+.element__like-button:hover {
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 900px) {
+    .elements__container {
+        grid-template-columns: repeat(2, 282px);
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .elements__container {
+        grid-template-columns: repeat(1, 282px);
+    }
+}
