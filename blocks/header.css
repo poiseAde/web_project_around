@@ -1,5 +1,4 @@
 .header {
-    /* border: 2px solid red; */
     max-width: 880px;
     width: 100%;
     padding: 45px 0 0;
@@ -20,7 +19,7 @@
    }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
     .logo {
         width: 126px;
         height: auto;
