@@ -7,7 +7,7 @@
     grid-gap: 30px;
     grid-template-areas: 
     "avatar info add";
-    align-items: center
+    align-self: center;
 }
 
 .profile__info-container {
@@ -54,16 +54,13 @@
     transition: opacity 0.2s linear;
 }
 
-.profile__info-edit-button:hover {
-    opacity: 0.6;
-}
-
 .profile__add-button {
     border: 2px solid white;
     justify-self: end;
     transition: opacity 0.2s linear;
 }
 
+.profile__info-edit-button:hover,
 .profile__add-button:hover {
     opacity: 0.6;
 }
