@@ -46,6 +46,8 @@
 
 .element__like-button {
     grid-area: button;
+    background: none;
+    border: none;
     margin-right: 15px;
     align-self: center;
     transition: 0.2s linear;
