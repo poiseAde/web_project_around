@@ -1,6 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/font/font.css);
 @import url(../blocks/header.css);
+@import url(../blocks/content.css);
 @import url(../blocks/profile.css);
 @import url(../blocks/elements.css);
 @import url(../blocks/footer.css);
@@ -9,17 +10,18 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
 
   .page {
     background-color: #000;
     position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-  }
-
-  .content {
-    display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
