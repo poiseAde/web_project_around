@@ -49,8 +49,7 @@
     grid-template-columns: 1fr 36px;
         grid-template-areas:
     "image image"
-    "title button"
-    ;
+    "title button";
 }
 
 .element__image {
