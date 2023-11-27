@@ -12,9 +12,9 @@
     padding: 0;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
-  }
+}
 
-  .page {
+.page {
     background-color: #000;
     position: relative;
     display: -webkit-box;
@@ -24,4 +24,4 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-  }
+}
