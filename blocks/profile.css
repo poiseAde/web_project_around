@@ -78,7 +78,6 @@
     -ms-grid-column-align: end;
         justify-self: end;
     background: none;
-    border: none;
     border: 2px solid white;
     -webkit-transition: opacity 0.2s linear;
     -o-transition: opacity 0.2s linear;
