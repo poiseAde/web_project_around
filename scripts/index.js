@@ -31,18 +31,26 @@ function saveEditor() {
 
     popup.classList.remove('popup_active');
 };
-popupSaveButton.addEventListener('click', saveEditor);
-popup.addEventListener('keypress', function(event) {
-    if (event.key === "Enter") {
-        saveEditor();
+popup.addEventListener('keyup', function() {
+    if (popupName.value.length <= 0 || popupAbout.value.length <= 0) {
+        popupSaveButton.setAttribute('disabled', true);
+        popupSaveButton.classList.add('popup__save-button_disabled');
+    } else {
+        popupSaveButton.setAttribute('disabled', false);
+        popupSaveButton.classList.remove('popup__save-button_disabled');
+        popup.addEventListener('keyup', function(e) {
+            if (e.key === "Enter") {
+                saveEditor();
+            }
+        });
     }
 });
+popupSaveButton.addEventListener('click', saveEditor);
 
 // close edit button
 popupCloseButton.addEventListener('click', function() {
     popup.classList.remove('popup_active');
 });
-
 
 // like button
 let l1 = 2;

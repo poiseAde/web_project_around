@@ -39,7 +39,7 @@
     margin-bottom: 50px;
 }
 
-.popup__name {
+.popup__input {
     width: 100%;
     color: #000;
     font-family: Inter;
@@ -48,19 +48,6 @@
     font-weight: 400;
     line-height: 2.14;
     margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.popup__about {
-    width: 100%;
-    color: #000;
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 2.14;
-    margin-bottom: 50px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
@@ -97,6 +84,12 @@
 .popup__close-button:hover {
     opacity: 0.6;
     cursor: pointer;
+}
+
+.popup__save-button_disabled {
+    background-color: #FFF;
+    color: #C4C4C4;
+    border: 1px solid #C4C4C4;
 }
 
 @media screen and (max-width: 600px) {
