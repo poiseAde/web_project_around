@@ -7,7 +7,7 @@
             justify-content: center;
 }
 
-.elements__container {
+.cards {
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: auto;
@@ -20,27 +20,13 @@
     transition: 0.2s linear;
 }
 
-.elements__container > *:nth-child(1) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 1;
-}
-
-.elements__container > *:nth-child(2) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 3;
-}
-
-.elements__container > *:nth-child(3) {
-    -ms-grid-row: 1;
-    -ms-grid-column: 5;
-}
-
-.element {
+.card {
     width: 282px;
     height: 361px;
     background-color: #fff;
     overflow: hidden;
     border-radius: 10px;
+    position: relative;
     display: -ms-grid;
     display: grid;
     -ms-grid-rows: 282px 1fr;
@@ -52,16 +38,18 @@
     "title button";
 }
 
-.element__image {
+.card__image {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-area: image;
+    object-fit: cover;
+    background-color: #C4C4C4;
     width: 282px;
-    height: auto;
+    height: 282px;
 }
 
-.element__title {
+.card__title {
     -ms-grid-row: 2;
     -ms-grid-column: 1;
     grid-area: title;
@@ -80,11 +68,13 @@
     overflow: hidden;
 }
 
-.element__like-button {
+.card__like-button {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     grid-area: button;
-    background: none;
+    width: 21px;
+    height: 19px;
+    background: url(../images/like_button.png);
     border: none;
     margin-right: 15px;
     -ms-grid-row-align: center;
@@ -94,20 +84,36 @@
     transition: 0.2s linear;
 }
 
-.element__like-button:hover {
+.card__like-button-active {
+    background: url(../images/like_button_active.png);
+}
+
+.card__delete-button {
+    width: 21px;
+    height: 21px;
+    background: url(../images/delete_button.png);
+    border: none;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    transition: 0.2s linear;
+}
+
+.card__like-button:hover,
+.card__delete-button:hover {
     opacity: 0.6;
     cursor: pointer;
 }
 
 @media screen and (max-width: 900px) {
-    .elements__container {
+    .cards {
         -ms-grid-columns: 282px 17px 282px;
         grid-template-columns: repeat(2, 282px);
     }
 }
 
 @media screen and (max-width: 600px) {
-    .elements__container {
+    .cards {
         -ms-grid-columns: 282px;
         grid-template-columns: repeat(1, 282px);
     }

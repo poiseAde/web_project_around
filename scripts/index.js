@@ -1,138 +1,163 @@
 const infoName = document.querySelector('.profile__info-name');
 const infoAbout = document.querySelector('.profile__info-about');
-const infoEditButton = document.querySelector('.profile__info-edit-button');
 
-const popup = document.querySelector('.popup');
-const popupName = document.querySelector('.popup__name');
-const popupAbout = document.querySelector('.popup__about');
-const popupSaveButton = document.querySelector('.popup__save-button');
-const popupCloseButton = document.querySelector('.popup__close-button');
+const EditButton = document.querySelector('.profile__info-edit-button');
 
-const like1 = document.querySelector('#like1')
-const like2 = document.querySelector('#like2')
-const like3 = document.querySelector('#like3')
-const like4 = document.querySelector('#like4')
-const like5 = document.querySelector('#like5')
-const like6 = document.querySelector('#like6')
+const popupEdit = document.querySelector('.popup_edit');
+const popupInputName = document.querySelector('.popup__input_name');
+const popupInputAbout = document.querySelector('.popup__input_about');
+const popupEditSaveButton = document.querySelector('.popup__edit_save-button');
+const popupEditCloseButton = document.querySelector('.popup__edit_close-button');
 
+const addButton = document.querySelector('.profile__add-button');
 
-// edit button
-infoEditButton.addEventListener('click', function() {
-    popup.classList.add('popup_active');
+const cardContainer = document.querySelector('.cards');
 
-    popupName.value = infoName.textContent;
-    popupAbout.value = infoAbout.textContent;
+const popupAdd = document.querySelector('.popup_add');
+const popupInputTitle = document.querySelector('.popup__input_title');
+const popupInputUrl = document.querySelector('.popup__input_url');
+const popupAddSaveButton = document.querySelector('.popup__add_save-button');
+const popupAddCloseButton = document.querySelector('.popup__add_close-button');
+
+const popupCard = document.querySelector('.popup_card');
+const popupCardImage = document.querySelector('.popup_card__image');
+const popupCardTitle = document.querySelector('.popup_card__title');
+const popupCardCloseButton = document.querySelector('.popup_card__close-button');
+
+EditButton.addEventListener('click', () => {
+    popupEdit.classList.add('popup_active');
+    popupInputName.value = infoName.textContent;
+    popupInputAbout.value = infoAbout.textContent;
 });
 
-// save button
 function saveEditor() {
-    infoName.textContent = popupName.value;
-    infoAbout.textContent = popupAbout.value;
-
-    popup.classList.remove('popup_active');
+    infoName.textContent = popupInputName.value;
+    infoAbout.textContent = popupInputAbout.value;
+    popupEdit.classList.remove('popup_active');
 };
-popup.addEventListener('keyup', function() {
-    if (popupName.value.length <= 0 || popupAbout.value.length <= 0) {
-        popupSaveButton.setAttribute('disabled', true);
-        popupSaveButton.classList.add('popup__save-button_disabled');
+popupEditSaveButton.addEventListener('keyup', (e, i) => {
+    if (popupInputName.value.length <= 0 || popupInputAbout.value.length <= 0) {
+        popupEditSaveButton.setAttribute('disabled', true);
+        popupEditSaveButton.classList.add('popup__save-button_disabled');
+        i = false
     } else {
-        popupSaveButton.setAttribute('disabled', false);
-        popupSaveButton.classList.remove('popup__save-button_disabled');
-        popup.addEventListener('keyup', function(e) {
-            if (e.key === "Enter") {
-                saveEditor();
-            }
+        popupEditSaveButton.removeAttribute('disabled', true);
+        popupEditSaveButton.classList.remove('popup__save-button_disabled');
+        i = true
+    }
+    if (e.key === 'Enter' && i === true) {
+        saveEditor();
+    }
+});
+popupEditSaveButton.addEventListener('click', saveEditor);
+
+popupEditCloseButton.addEventListener('click', () => {
+    popupEdit.classList.remove('popup_active');
+});
+
+const initialCards = [
+    {
+      name: "Lembah Yosemite",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg"
+    },
+    {
+      name: "Danau Louise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg"
+    },
+    {
+      name: "Pegunungan Gundul",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_bald-mountains.jpg"
+    },
+    {
+      name: "Gunung Latemar",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_latemar.jpg"
+    },
+    {
+      name: "Taman Nasional Vanoise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"
+    }
+  ];
+  
+addButton.addEventListener('click', () => {
+    popupAdd.classList.add('popup_active');
+});
+
+function addCard(titleValue, urlValue) {
+    const cardTemplate = document.querySelector('.card-template').content;
+    const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
+
+    cardElement.querySelector('.card__image').src = urlValue;
+    cardElement.querySelector('.card__image').alt = titleValue;
+    
+    cardElement.querySelector('.card__title').textContent = titleValue;
+
+    cardElement.querySelector('.card__like-button').addEventListener('click', e => {
+        e.target.classList.toggle('card__like-button-active');
+    });
+
+    cardElement.querySelector('.card__delete-button').addEventListener('click', e => {
+        e.target.parentElement.remove();
+    });
+
+    cardElement.querySelector('.card__image').addEventListener('click', e => {
+        // console.log(e.target.alt)
+        popupCard.classList.add('popup_active');
+        popupCardImage.src = e.target.src;
+        popupCardTitle.textContent = e.target.alt;
+    });
+
+    cardContainer.prepend(cardElement);
+};
+
+initialCards.reverse().forEach( item => {
+    addCard(item.name, item.link)
+});
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
+
+popupAddSaveButton.addEventListener('click', () => {
+    const invalidMessage = document.querySelectorAll('.popup__invalid')
+
+    if (URL.canParse(popupInputUrl.value) === true) {
+        addCard(popupInputTitle.value, popupInputUrl.value);
+
+        popupInputTitle.classList.remove('popup__input_invalid_active');
+        popupInputUrl.classList.remove('popup__input_invalid_active');
+
+        invalidMessage.forEach(item => {
+            item.classList.remove('popup__invalid_active');
         });
+
+        popupInputTitle.value = '';
+        popupInputUrl.value = '';
+    
+        popupAdd.classList.remove('popup_active');
+    } else {
+        popupInputTitle.classList.add('popup__input_invalid_active');
+        popupInputUrl.classList.add('popup__input_invalid_active');
+
+        invalidMessage.forEach(item => {
+            item.classList.add('popup__invalid_active');
+        });
+
+        popupInputTitle.value = '';
+        popupInputUrl.value = '';
     }
 });
-popupSaveButton.addEventListener('click', saveEditor);
 
-// close edit button
-popupCloseButton.addEventListener('click', function() {
-    popup.classList.remove('popup_active');
+popupAddCloseButton.addEventListener('click', () => {
+    popupAdd.classList.remove('popup_active');
+
+    popupInputTitle.value = '';
+    popupInputUrl.value = '';
 });
 
-// like button
-let l1 = 2;
-like1.addEventListener('click', function() {
-    if (l1 % 2 == 0){
-        like1.innerHTML  = `
-        <img src="images/like_button_active.png" alt="tombol suka">
-        `;
-    } else {
-        like1.innerHTML = `
-        <img src="images/like_button.png" alt="tombol suka">
-        `;
-    }
-    l1++
-})
-
-let l2 = 2;
-like2.addEventListener('click', function() {
-    if (l2 % 2 == 0){
-        like2.innerHTML  = `
-        <img src="images/like_button_active.png" alt="tombol suka">
-        `;
-    } else {
-        like2.innerHTML = `
-        <img src="images/like_button.png" alt="tombol suka">
-        `;
-    }
-    l2++
-})
-
-let l3 = 2;
-like3.addEventListener('click', function() {
-    if (l3 % 2 == 0){
-        like3.innerHTML  = `
-        <img src="images/like_button_active.png" alt="tombol suka">
-        `;
-    } else {
-        like3.innerHTML = `
-        <img src="images/like_button.png" alt="tombol suka">
-        `;
-    }
-    l3++
-})
-
-let l4 = 2;
-like4.addEventListener('click', function() {
-    if (l4 % 2 == 0){
-        like4.innerHTML  = `
-        <img src="images/like_button_active.png" alt="tombol suka">
-        `;
-    } else {
-        like4.innerHTML = `
-        <img src="images/like_button.png" alt="tombol suka">
-        `;
-    }
-    l4++
-})
-
-let l5 = 2;
-like5.addEventListener('click', function() {
-    if (l5 % 2 == 0){
-        like5.innerHTML  = `
-        <img src="images/like_button_active.png" alt="tombol suka">
-        `;
-    } else {
-        like5.innerHTML = `
-        <img src="images/like_button.png" alt="tombol suka">
-        `;
-    }
-    l5++
-})
-
-let l6 = 2;
-like6.addEventListener('click', function() {
-    if (l6 % 2 == 0){
-        like6.innerHTML  = `
-        <img src="images/like_button_active.png" alt="tombol suka">
-        `;
-    } else {
-        like6.innerHTML = `
-        <img src="images/like_button.png" alt="tombol suka">
-        `;
-    }
-    l6++
-})
+popupCardCloseButton.addEventListener('click', () => {
+    popupCard.classList.remove('popup_active');
+});

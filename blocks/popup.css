@@ -70,7 +70,9 @@
 }
 
 .popup__close-button {
-    background: none;
+    width: 32px;
+    height: 32px;
+    background: url(../images/close_button.png);
     border: none;
     position: absolute;
     bottom: 100%;
@@ -92,6 +94,65 @@
     border: 1px solid #C4C4C4;
 }
 
+.popup__input_invalid_active {
+    border-bottom:1px solid #F00;
+    margin-bottom: 5px;
+}
+
+.popup__invalid {
+    color: #F00;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.popup__invalid_active {
+    display: block;
+}
+
+.popup_card {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.popup_card_container {
+    position: relative;
+}
+
+.popup_card__image {
+    width: auto;
+    height: auto;
+    max-width: 800px;
+    max-height: 600px;
+} 
+
+.popup_card__title {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    position: absolute;
+    top: 100%;
+    left: 0%;
+}
+
+.popup_card__close-button {
+    bottom: 102%;
+}
+
+@media screen and (max-width: 1000px) {
+    .popup_card__image {
+        max-width: 75vw;
+        max-height: 75vh;
+    } 
+}
+
+
 @media screen and (max-width: 600px) {
     .popup__container {
         width: 282px;
@@ -101,5 +162,10 @@
 
     .popup__close-button {
         left: 90%;
+        bottom: 102%;
+    }
+
+    .popup_card__close-button {
+        left: 93%;
     }
 }

@@ -26,66 +26,48 @@
             </button>
         </section>
         <section class="elements">
-            <div class="elements__container">
-                <article class="element">
-                    <img src="images/element_image_1.png" alt="" class="element__image">
-                    <h2 class="element__title">Lembah Yosemite</h2>
-                    <button class="element__like-button " id="like1">
-                        <img src="images/like_button.png" alt="tombol suka">
-                    </button>
-                </article>
-                <article class="element">
-                    <img src="images/element_image_2.png" alt="" class="element__image">
-                    <h2 class="element__title">Danau Louise</h2>
-                    <button class="element__like-button" id="like2">
-                        <img src="images/like_button.png" alt="tombol suka">
-                    </button>
-                </article>
-                <article class="element">
-                    <img src="images/element_image_3.png" alt="" class="element__image">
-                    <h2 class="element__title">Pegunungan Gundul</h2>
-                    <button class="element__like-button" id="like3">
-                        <img src="images/like_button.png" alt="tombol suka">
-                    </button>
-                </article>
-                <article class="element">
-                    <img src="images/element_image_4.png" alt="" class="element__image">
-                    <h2 class="element__title">Latemar</h2>
-                    <button class="element__like-button" id="like4">
-                        <img src="images/like_button.png" alt="tombol suka">
-                    </button>
-                </article>
-                <article class="element">
-                    <img src="images/element_image_5.png" alt="" class="element__image">
-                    <h2 class="element__title">vanoise national park</h2>
-                    <button class="element__like-button" id="like5">
-                        <img src="images/like_button.png" alt="tombol suka">
-                    </button>
-                </article>
-                <article class="element">
-                    <img src="images/element_image_6.png" alt="" class="element__image">
-                    <h2 class="element__title">Lago di Braies</h2>
-                    <button class="element__like-button" id="like6">
-                        <img src="images/like_button.png" alt="tombol suka">
-                    </button>
-                </article>
+            <div class="cards">
             </div>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&#169; 2021 Around The U.S.</p>
     </footer>
-    <section class="popup">
+    <section class="popup_edit popup">
         <article class="popup__container">
             <h2 class="popup__title">Edit profil</h2>
-            <input type="text" placeholder="Nama" class="popup__name popup__input">
-            <input type="text" placeholder="Tentang" class="popup__about popup__input">
-            <input type= "submit" value="Simpan" class="popup__save-button">
-            <button class="popup__close-button">
-                <img src="images/close_button.png" alt="tombol tutup">
-            </button>
+            <input type="text" placeholder="Nama" class="popup__input_name popup__input">
+            <input type="text" placeholder="Tentang" class="popup__input_about popup__input">
+            <input type="submit" value="Simpan" class="popup__edit_save-button popup__save-button">
+            <input type="button" class="popup__edit_close-button popup__close-button">
         </article>
     </section>
+    <section class="popup_add popup">
+        <article class="popup__container">
+            <h2 class="popup__title">Tempat baru</h2>
+            <input type="text" placeholder="Judul" class="popup__input_title popup__input">
+            <p class="popup__invalid">Silakan isi kolom ini.</p>
+            <input type="text" placeholder="URL Gambar" class="popup__input_url popup__input">
+            <p class="popup__invalid">Silakan masukkan alamat web.</p>
+            <input type= "submit" value="Simpan" class="popup__add_save-button popup__save-button">
+            <button class="popup__add_close-button popup__close-button"></button>
+        </article>
+    </section>
+    <section class="popup_card popup">
+        <article class="popup_card_container">
+            <img src="" alt="" class="popup_card__image">
+            <h2 class="popup_card__title"></h2>
+            <input type="button" class="popup_card__close-button popup__close-button">
+        </article>
+    </section>
+    <template class="card-template">
+        <article class="card">
+            <img src="" alt="" class="card__image">
+            <h2 class="card__title"></h2>
+            <input type="button" class="card__like-button">
+            <input type="button" class="card__delete-button">
+        </article>
+    </template>
     <script src="scripts/index.js"></script>
 </body>
 </html>
