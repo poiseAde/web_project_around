@@ -1,7 +1,7 @@
 const infoName = document.querySelector('.profile__info-name');
 const infoAbout = document.querySelector('.profile__info-about');
 
-const EditButton = document.querySelector('.profile__info-edit-button');
+const editButton = document.querySelector('.profile__info-edit-button');
 
 const edit = document.querySelector('.popup-edit');
 const inputName = document.querySelector('.popup__input_name');
@@ -52,8 +52,8 @@ const initialCards = [
   ];
 
 
-function isInputEmpty(i) {
-    function l(i1, i2) {
+function checkInput(i) {
+    function checkLength(i1, i2) {
         if (i1.value.length <= 0 || i2.value.length <= 0) {
             return true;
         } else {
@@ -61,29 +61,28 @@ function isInputEmpty(i) {
         };
     };
     
-    if ( i === edit && l(inputName, inputAbout) === true) {
+    if ( i === edit && checkLength(inputName, inputAbout) === true) {
         return true;
-    } else if ( i === edit && l(inputName, inputAbout) === false) {
+    } else if ( i === edit && checkLength(inputName, inputAbout) === false) {
         return false;
-    } else if (i === add && l(inputTitle, inputUrl) === true) {
+    } else if (i === add && checkLength(inputTitle, inputUrl) === true) {
         return true;
-    } else if (i === add && l(inputTitle, inputUrl) === false) {
+    } else if (i === add && checkLength(inputTitle, inputUrl) === false) {
         return false;
     };
 };
 
 function saveButtonDisabledToggle(i) {
-    if (i === edit && isInputEmpty(edit) === false) {
+    if (i === edit && checkInput(edit) === false) {
         editSaveButton.removeAttribute('disabled', true);
         editSaveButton.classList.remove('popup__save-button_disabled');
-    } else if (i === edit && isInputEmpty(edit) === true) {
+    } else if (i === edit && checkInput(edit) === true) {
         editSaveButton.setAttribute('disabled', true);
         editSaveButton.classList.add('popup__save-button_disabled');
-        console.log('fu')
-    } else if (i === add && isInputEmpty(add) === false) {
+    } else if (i === add && checkInput(add) === false) {
         addSaveButton.removeAttribute('disabled', true);
         addSaveButton.classList.remove('popup__save-button_disabled');
-    } else if (i === add && isInputEmpty(add) === true) {
+    } else if (i === add && checkInput(add) === true) {
         addSaveButton.setAttribute('disabled', true);
         addSaveButton.classList.add('popup__save-button_disabled');
     };
@@ -138,7 +137,7 @@ function saveButtonClick(i) {
 }
  
 
-EditButton.addEventListener('click', () => {
+editButton.addEventListener('click', () => {
     edit.classList.add('popup_active');
     inputName.value = infoName.textContent;
     inputAbout.value = infoAbout.textContent;
@@ -153,14 +152,14 @@ addButton.addEventListener('click', () => {
 
 edit.addEventListener('keyup', e => {
     saveButtonDisabledToggle(edit)
-    if(e.key ==='Enter' && isInputEmpty(edit) === false) {
+    if(e.key ==='Enter' && checkInput(edit) === false) {
         saveButtonClick(edit);
     }
 });
 
 add.addEventListener('keyup', e => {
     saveButtonDisabledToggle(add)
-    if(e.key ==='Enter' && isInputEmpty(add) === false) {
+    if(e.key ==='Enter' && checkInput(add) === false) {
         saveButtonClick(add);
     }
 });

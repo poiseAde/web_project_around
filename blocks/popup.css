@@ -132,8 +132,8 @@
 .popup__card-image {
     width: auto;
     height: auto;
-    max-width: 800px;
-    max-height: 600px;
+    max-width: 75vw;
+    max-height: 75vh;
 } 
 
 .popup__card-title {
@@ -151,14 +151,6 @@
 .popup__card-close-button {
     bottom: 102%;
 }
-
-@media screen and (max-width: 1000px) {
-    .popup_card__image {
-        max-width: 75vw;
-        max-height: 75vh;
-    } 
-}
-
 
 @media screen and (max-width: 600px) {
     .popup__container {
