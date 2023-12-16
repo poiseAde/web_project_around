@@ -3,26 +3,26 @@ const infoAbout = document.querySelector('.profile__info-about');
 
 const EditButton = document.querySelector('.profile__info-edit-button');
 
-const edit = document.querySelector('.popup_edit');
-const inputName = document.querySelector('.popup_edit__input_name');
-const inputAbout = document.querySelector('.popup_edit__input_about');
-const editSaveButton = document.querySelector('.popup_edit__save-button');
-const editCloseButton = document.querySelector('.popup_edit__close-button');
+const edit = document.querySelector('.popup-edit');
+const inputName = document.querySelector('.popup-edit__input_name');
+const inputAbout = document.querySelector('.popup-edit__input_about');
+const editSaveButton = document.querySelector('.popup-edit__save-button');
+const editCloseButton = document.querySelector('.popup-edit__close-button');
 
 const addButton = document.querySelector('.profile__add-button');
 
-const add = document.querySelector('.popup_add');
-const inputTitle = document.querySelector('.popup_add__input_title');
-const inputUrl = document.querySelector('.popup_add__input_url');
-const addSaveButton = document.querySelector('.popup_add__save-button');
-const addCloseButton = document.querySelector('.popup_add__close-button');
+const add = document.querySelector('.popup-add');
+const inputTitle = document.querySelector('.popup-add__input_title');
+const inputUrl = document.querySelector('.popup-add__input_url');
+const addSaveButton = document.querySelector('.popup-add__save-button');
+const addCloseButton = document.querySelector('.popup-add__close-button');
 
-const invalidMessage = document.querySelectorAll('.popup__invalid_message')
+const invalidMessage = document.querySelectorAll('.popup-add__invalid_message')
 
-const card = document.querySelector('.popup_card');
-const cardImage = document.querySelector('.popup_card__image');
-const cardTitle = document.querySelector('.popup_card__title');
-const cardCloseButton = document.querySelector('.popup_card__close-button');
+const card = document.querySelector('.popup-card');
+const cardImage = document.querySelector('.popup-card__image');
+const cardTitle = document.querySelector('.popup-card__title');
+const cardCloseButton = document.querySelector('.popup-card__close-button');
 
 const initialCards = [
     {
@@ -122,15 +122,15 @@ function saveButtonClick(i) {
         infoAbout.textContent = inputAbout.value;
         edit.classList.remove('popup_active');
     } else if (i === add && URL.canParse(inputUrl.value) === true) {
-        inputTitle.classList.remove('popup__input_invalid_active');
-        inputUrl.classList.remove('popup__input_invalid_active');
-        invalidMessage.forEach(item => {item.classList.remove('popup__invalid_message_active');});
+        inputTitle.classList.remove('popup-add__input_invalid_active');
+        inputUrl.classList.remove('popup-add__input_invalid_active');
+        invalidMessage.forEach(item => {item.classList.remove('popup-add__invalid_message_active');});
         addCard(inputTitle.value, inputUrl.value);
         add.classList.remove('popup_active');
     } else if (i === add && URL.canParse(inputUrl.value) === false) {
-        inputTitle.classList.add('popup__input_invalid_active');
-        inputUrl.classList.add('popup__input_invalid_active');
-        invalidMessage.forEach(item => {item.classList.add('popup__invalid_message_active');});
+        inputTitle.classList.add('popup-add__input_invalid_active');
+        inputUrl.classList.add('popup-add__input_invalid_active');
+        invalidMessage.forEach(item => {item.classList.add('popup-add__invalid_message_active');});
         inputTitle.value = '';
         inputUrl.value = '';
         saveButtonDisabledToggle(add)
