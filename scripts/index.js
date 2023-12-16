@@ -3,26 +3,26 @@ const infoAbout = document.querySelector('.profile__info-about');
 
 const EditButton = document.querySelector('.profile__info-edit-button');
 
-const edit = document.querySelector('.popup-edit');
-const inputName = document.querySelector('.popup-edit__input_name');
-const inputAbout = document.querySelector('.popup-edit__input_about');
-const editSaveButton = document.querySelector('.popup-edit__save-button');
-const editCloseButton = document.querySelector('.popup-edit__close-button');
+const edit = document.querySelector('.popup__edit');
+const inputName = document.querySelector('.popup__input_name');
+const inputAbout = document.querySelector('.popup__input_about');
+const editSaveButton = document.querySelector('.popup__edit-save-button');
+const editCloseButton = document.querySelector('.popup__edit-close-button');
 
 const addButton = document.querySelector('.profile__add-button');
 
-const add = document.querySelector('.popup-add');
-const inputTitle = document.querySelector('.popup-add__input_title');
-const inputUrl = document.querySelector('.popup-add__input_url');
-const addSaveButton = document.querySelector('.popup-add__save-button');
-const addCloseButton = document.querySelector('.popup-add__close-button');
+const add = document.querySelector('.popup__add');
+const inputTitle = document.querySelector('.popup__input_title');
+const inputUrl = document.querySelector('.popup__input_url');
+const addSaveButton = document.querySelector('.popup__add-save-button');
+const addCloseButton = document.querySelector('.popup__add-close-button');
 
-const invalidMessage = document.querySelectorAll('.popup-add__invalid_message')
+const invalidMessage = document.querySelectorAll('.popup__invalid-message')
 
-const card = document.querySelector('.popup-card');
-const cardImage = document.querySelector('.popup-card__image');
-const cardTitle = document.querySelector('.popup-card__title');
-const cardCloseButton = document.querySelector('.popup-card__close-button');
+const card = document.querySelector('.popup__card');
+const cardImage = document.querySelector('.popup__card-image');
+const cardTitle = document.querySelector('.popup__card-title');
+const cardCloseButton = document.querySelector('.popup__card-close-button');
 
 const initialCards = [
     {
@@ -122,15 +122,15 @@ function saveButtonClick(i) {
         infoAbout.textContent = inputAbout.value;
         edit.classList.remove('popup_active');
     } else if (i === add && URL.canParse(inputUrl.value) === true) {
-        inputTitle.classList.remove('popup-add__input_invalid_active');
-        inputUrl.classList.remove('popup-add__input_invalid_active');
-        invalidMessage.forEach(item => {item.classList.remove('popup-add__invalid_message_active');});
+        inputTitle.classList.remove('popup__input-invalid_active');
+        inputUrl.classList.remove('popup__input-invalid_active');
+        invalidMessage.forEach(item => {item.classList.remove('popup__invalid-message_active');});
         addCard(inputTitle.value, inputUrl.value);
         add.classList.remove('popup_active');
     } else if (i === add && URL.canParse(inputUrl.value) === false) {
-        inputTitle.classList.add('popup-add__input_invalid_active');
-        inputUrl.classList.add('popup-add__input_invalid_active');
-        invalidMessage.forEach(item => {item.classList.add('popup-add__invalid_message_active');});
+        inputTitle.classList.add('popup__input-invalid_active');
+        inputUrl.classList.add('popup__input-invalid_active');
+        invalidMessage.forEach(item => {item.classList.add('popup__invalid-message_active');});
         inputTitle.value = '';
         inputUrl.value = '';
         saveButtonDisabledToggle(add)
@@ -178,9 +178,9 @@ editCloseButton.addEventListener('click', () => {
 
 addCloseButton.addEventListener('click', () => {
     add.classList.remove('popup_active');
-    inputTitle.classList.remove('popup__input_invalid_active');
-    inputUrl.classList.remove('popup__input_invalid_active');
-    invalidMessage.forEach(item => {item.classList.remove('popup__invalid_message_active');});
+    inputTitle.classList.remove('popup__input-invalid_active');
+    inputUrl.classList.remove('popup__input-invalid_active');
+    invalidMessage.forEach(item => {item.classList.remove('popup__invalid-message_active');});
     inputTitle.value = '';
     inputUrl.value = '';});
 
