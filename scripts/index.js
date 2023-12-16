@@ -3,7 +3,7 @@ const infoAbout = document.querySelector('.profile__info-about');
 
 const EditButton = document.querySelector('.profile__info-edit-button');
 
-const edit = document.querySelector('.popup__edit');
+const edit = document.querySelector('.popup-edit');
 const inputName = document.querySelector('.popup__input_name');
 const inputAbout = document.querySelector('.popup__input_about');
 const editSaveButton = document.querySelector('.popup__edit-save-button');
@@ -11,7 +11,7 @@ const editCloseButton = document.querySelector('.popup__edit-close-button');
 
 const addButton = document.querySelector('.profile__add-button');
 
-const add = document.querySelector('.popup__add');
+const add = document.querySelector('.popup-add');
 const inputTitle = document.querySelector('.popup__input_title');
 const inputUrl = document.querySelector('.popup__input_url');
 const addSaveButton = document.querySelector('.popup__add-save-button');
@@ -19,7 +19,7 @@ const addCloseButton = document.querySelector('.popup__add-close-button');
 
 const invalidMessage = document.querySelectorAll('.popup__invalid-message')
 
-const card = document.querySelector('.popup__card');
+const card = document.querySelector('.popup-card');
 const cardImage = document.querySelector('.popup__card-image');
 const cardTitle = document.querySelector('.popup__card-title');
 const cardCloseButton = document.querySelector('.popup__card-close-button');
