@@ -17,17 +17,12 @@
             <div class="profile__info-container">
                 <h1 class="profile__info-name">Jaques Cousteau</h1>
                 <h2 class="profile__info-about">Penjelajah</h2>
-                <button class="profile__info-edit-button">
-                    <img src="images/edit_button.png" alt="tombol edit">
-                </button>
+                <input type="button" class="profile__info-edit-button">
             </div>
-            <button class="profile__add-button">
-                <img src="images/add_button.png" alt="tombol tambah">
-            </button>
+            <input type="button" class="profile__add-button">
         </section>
         <section class="elements">
-            <div class="cards">
-            </div>
+            <div class="cards"></div>
         </section>
     </main>
     <footer class="footer">
@@ -36,21 +31,21 @@
     <section class="popup_edit popup">
         <article class="popup__container">
             <h2 class="popup__title">Edit profil</h2>
-            <input type="text" placeholder="Nama" class="popup__input_name popup__input">
-            <input type="text" placeholder="Tentang" class="popup__input_about popup__input">
-            <input type="submit" value="Simpan" class="popup__edit_save-button popup__save-button">
-            <input type="button" class="popup__edit_close-button popup__close-button">
+            <input type="text" placeholder="Nama" class="popup_edit__input_name popup__input">
+            <input type="text" placeholder="Tentang" class="popup_edit__input_about popup__input">
+            <input type="submit" value="Simpan" class="popup_edit__save-button popup__save-button">
+            <input type="button" class="popup_edit__close-button popup__close-button">
         </article>
     </section>
     <section class="popup_add popup">
         <article class="popup__container">
             <h2 class="popup__title">Tempat baru</h2>
-            <input type="text" placeholder="Judul" class="popup__input_title popup__input">
-            <p class="popup__invalid">Silakan isi kolom ini.</p>
-            <input type="text" placeholder="URL Gambar" class="popup__input_url popup__input">
-            <p class="popup__invalid">Silakan masukkan alamat web.</p>
-            <input type= "submit" value="Simpan" class="popup__add_save-button popup__save-button">
-            <button class="popup__add_close-button popup__close-button"></button>
+            <input type="text" placeholder="Judul" class="popup_add__input_title popup__input">
+            <p class="popup__invalid_message">Silakan isi kolom ini.</p>
+            <input type="url" placeholder="URL Gambar" class="popup_add__input_url popup__input">
+            <p class="popup__invalid_message">Silakan masukkan alamat web.</p>
+            <input type= "submit" value="Simpan" class="popup_add__save-button popup__save-button">
+            <input type="button" class="popup_add__close-button popup__close-button">
         </article>
     </section>
     <section class="popup_card popup">

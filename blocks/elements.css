@@ -33,7 +33,7 @@
     grid-template-rows: 282px 1fr;
     -ms-grid-columns: 1fr 36px;
     grid-template-columns: 1fr 36px;
-        grid-template-areas:
+            grid-template-areas:
     "image image"
     "title button";
 }
@@ -43,7 +43,8 @@
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
     grid-area: image;
-    object-fit: cover;
+    -o-object-fit: cover;
+       object-fit: cover;
     background-color: #C4C4C4;
     width: 282px;
     height: 282px;
@@ -96,6 +97,8 @@
     position: absolute;
     top: 20px;
     right: 15px;
+    -webkit-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
     transition: 0.2s linear;
 }
 

@@ -3,57 +3,26 @@ const infoAbout = document.querySelector('.profile__info-about');
 
 const EditButton = document.querySelector('.profile__info-edit-button');
 
-const popupEdit = document.querySelector('.popup_edit');
-const popupInputName = document.querySelector('.popup__input_name');
-const popupInputAbout = document.querySelector('.popup__input_about');
-const popupEditSaveButton = document.querySelector('.popup__edit_save-button');
-const popupEditCloseButton = document.querySelector('.popup__edit_close-button');
+const edit = document.querySelector('.popup_edit');
+const inputName = document.querySelector('.popup_edit__input_name');
+const inputAbout = document.querySelector('.popup_edit__input_about');
+const editSaveButton = document.querySelector('.popup_edit__save-button');
+const editCloseButton = document.querySelector('.popup_edit__close-button');
 
 const addButton = document.querySelector('.profile__add-button');
 
-const cardContainer = document.querySelector('.cards');
+const add = document.querySelector('.popup_add');
+const inputTitle = document.querySelector('.popup_add__input_title');
+const inputUrl = document.querySelector('.popup_add__input_url');
+const addSaveButton = document.querySelector('.popup_add__save-button');
+const addCloseButton = document.querySelector('.popup_add__close-button');
 
-const popupAdd = document.querySelector('.popup_add');
-const popupInputTitle = document.querySelector('.popup__input_title');
-const popupInputUrl = document.querySelector('.popup__input_url');
-const popupAddSaveButton = document.querySelector('.popup__add_save-button');
-const popupAddCloseButton = document.querySelector('.popup__add_close-button');
+const invalidMessage = document.querySelectorAll('.popup__invalid_message')
 
-const popupCard = document.querySelector('.popup_card');
-const popupCardImage = document.querySelector('.popup_card__image');
-const popupCardTitle = document.querySelector('.popup_card__title');
-const popupCardCloseButton = document.querySelector('.popup_card__close-button');
-
-EditButton.addEventListener('click', () => {
-    popupEdit.classList.add('popup_active');
-    popupInputName.value = infoName.textContent;
-    popupInputAbout.value = infoAbout.textContent;
-});
-
-function saveEditor() {
-    infoName.textContent = popupInputName.value;
-    infoAbout.textContent = popupInputAbout.value;
-    popupEdit.classList.remove('popup_active');
-};
-popupEditSaveButton.addEventListener('keyup', (e, i) => {
-    if (popupInputName.value.length <= 0 || popupInputAbout.value.length <= 0) {
-        popupEditSaveButton.setAttribute('disabled', true);
-        popupEditSaveButton.classList.add('popup__save-button_disabled');
-        i = false
-    } else {
-        popupEditSaveButton.removeAttribute('disabled', true);
-        popupEditSaveButton.classList.remove('popup__save-button_disabled');
-        i = true
-    }
-    if (e.key === 'Enter' && i === true) {
-        saveEditor();
-    }
-});
-popupEditSaveButton.addEventListener('click', saveEditor);
-
-popupEditCloseButton.addEventListener('click', () => {
-    popupEdit.classList.remove('popup_active');
-});
+const card = document.querySelector('.popup_card');
+const cardImage = document.querySelector('.popup_card__image');
+const cardTitle = document.querySelector('.popup_card__title');
+const cardCloseButton = document.querySelector('.popup_card__close-button');
 
 const initialCards = [
     {
@@ -81,18 +50,52 @@ const initialCards = [
       link: "https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lago.jpg"
     }
   ];
-  
-addButton.addEventListener('click', () => {
-    popupAdd.classList.add('popup_active');
-});
+
+
+function isInputEmpty(i) {
+    function l(i1, i2) {
+        if (i1.value.length <= 0 || i2.value.length <= 0) {
+            return true;
+        } else {
+            return false;
+        };
+    };
+    
+    if ( i === edit && l(inputName, inputAbout) === true) {
+        return true;
+    } else if ( i === edit && l(inputName, inputAbout) === false) {
+        return false;
+    } else if (i === add && l(inputTitle, inputUrl) === true) {
+        return true;
+    } else if (i === add && l(inputTitle, inputUrl) === false) {
+        return false;
+    };
+};
+
+function saveButtonDisabledToggle(i) {
+    if (i === edit && isInputEmpty(edit) === false) {
+        editSaveButton.removeAttribute('disabled', true);
+        editSaveButton.classList.remove('popup__save-button_disabled');
+    } else if (i === edit && isInputEmpty(edit) === true) {
+        editSaveButton.setAttribute('disabled', true);
+        editSaveButton.classList.add('popup__save-button_disabled');
+        console.log('fu')
+    } else if (i === add && isInputEmpty(add) === false) {
+        addSaveButton.removeAttribute('disabled', true);
+        addSaveButton.classList.remove('popup__save-button_disabled');
+    } else if (i === add && isInputEmpty(add) === true) {
+        addSaveButton.setAttribute('disabled', true);
+        addSaveButton.classList.add('popup__save-button_disabled');
+    };
+};
 
 function addCard(titleValue, urlValue) {
+    const cardContainer = document.querySelector('.cards');
     const cardTemplate = document.querySelector('.card-template').content;
     const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
     cardElement.querySelector('.card__image').src = urlValue;
-    cardElement.querySelector('.card__image').alt = titleValue;
-    
+    cardElement.querySelector('.card__image').alt = titleValue;  
     cardElement.querySelector('.card__title').textContent = titleValue;
 
     cardElement.querySelector('.card__like-button').addEventListener('click', e => {
@@ -102,62 +105,88 @@ function addCard(titleValue, urlValue) {
     cardElement.querySelector('.card__delete-button').addEventListener('click', e => {
         e.target.parentElement.remove();
     });
-
+    
     cardElement.querySelector('.card__image').addEventListener('click', e => {
-        // console.log(e.target.alt)
-        popupCard.classList.add('popup_active');
-        popupCardImage.src = e.target.src;
-        popupCardTitle.textContent = e.target.alt;
+        card.classList.add('popup_active');
+        cardImage.src = e.target.src;
+        cardImage.alt = e.target.alt;
+        cardTitle.textContent = e.target.alt;
     });
 
     cardContainer.prepend(cardElement);
 };
 
-initialCards.reverse().forEach( item => {
-    addCard(item.name, item.link)
+function saveButtonClick(i) {
+    if (i === edit) {
+        infoName.textContent = inputName.value;
+        infoAbout.textContent = inputAbout.value;
+        edit.classList.remove('popup_active');
+    } else if (i === add && URL.canParse(inputUrl.value) === true) {
+        inputTitle.classList.remove('popup__input_invalid_active');
+        inputUrl.classList.remove('popup__input_invalid_active');
+        invalidMessage.forEach(item => {item.classList.remove('popup__invalid_message_active');});
+        addCard(inputTitle.value, inputUrl.value);
+        add.classList.remove('popup_active');
+    } else if (i === add && URL.canParse(inputUrl.value) === false) {
+        inputTitle.classList.add('popup__input_invalid_active');
+        inputUrl.classList.add('popup__input_invalid_active');
+        invalidMessage.forEach(item => {item.classList.add('popup__invalid_message_active');});
+        inputTitle.value = '';
+        inputUrl.value = '';
+        saveButtonDisabledToggle(add)
+    };
+}
+ 
+
+EditButton.addEventListener('click', () => {
+    edit.classList.add('popup_active');
+    inputName.value = infoName.textContent;
+    inputAbout.value = infoAbout.textContent;
 });
 
-function delay(time) {
-    return new Promise(resolve => setTimeout(resolve, time));
-  }
+addButton.addEventListener('click', () => {
+    add.classList.add('popup_active');
+    inputTitle.value = '';
+    inputUrl.value = '';
+    saveButtonDisabledToggle(add);
+});
 
-popupAddSaveButton.addEventListener('click', () => {
-    const invalidMessage = document.querySelectorAll('.popup__invalid')
-
-    if (URL.canParse(popupInputUrl.value) === true) {
-        addCard(popupInputTitle.value, popupInputUrl.value);
-
-        popupInputTitle.classList.remove('popup__input_invalid_active');
-        popupInputUrl.classList.remove('popup__input_invalid_active');
-
-        invalidMessage.forEach(item => {
-            item.classList.remove('popup__invalid_active');
-        });
-
-        popupInputTitle.value = '';
-        popupInputUrl.value = '';
-    
-        popupAdd.classList.remove('popup_active');
-    } else {
-        popupInputTitle.classList.add('popup__input_invalid_active');
-        popupInputUrl.classList.add('popup__input_invalid_active');
-
-        invalidMessage.forEach(item => {
-            item.classList.add('popup__invalid_active');
-        });
-
-        popupInputTitle.value = '';
-        popupInputUrl.value = '';
+edit.addEventListener('keyup', e => {
+    saveButtonDisabledToggle(edit)
+    if(e.key ==='Enter' && isInputEmpty(edit) === false) {
+        saveButtonClick(edit);
     }
 });
 
-popupAddCloseButton.addEventListener('click', () => {
-    popupAdd.classList.remove('popup_active');
-
-    popupInputTitle.value = '';
-    popupInputUrl.value = '';
+add.addEventListener('keyup', e => {
+    saveButtonDisabledToggle(add)
+    if(e.key ==='Enter' && isInputEmpty(add) === false) {
+        saveButtonClick(add);
+    }
 });
 
-popupCardCloseButton.addEventListener('click', () => {
-    popupCard.classList.remove('popup_active');
+editSaveButton.addEventListener('click', () => {saveButtonClick(edit)});
+
+addSaveButton.addEventListener('click', () => {saveButtonClick(add)});
+
+editCloseButton.addEventListener('click', () => {
+    edit.classList.remove('popup_active');
+    editSaveButton.removeAttribute('disabled', true);
+    editSaveButton.classList.remove('popup__save-button_disabled');
+    saveButtonDisabledToggle(edit);
 });
+
+addCloseButton.addEventListener('click', () => {
+    add.classList.remove('popup_active');
+    inputTitle.classList.remove('popup__input_invalid_active');
+    inputUrl.classList.remove('popup__input_invalid_active');
+    invalidMessage.forEach(item => {item.classList.remove('popup__invalid_message_active');});
+    inputTitle.value = '';
+    inputUrl.value = '';});
+
+cardCloseButton.addEventListener('click', () => {
+    card.classList.remove('popup_active');
+})
+
+initialCards.reverse().forEach( item => {addCard(item.name, item.link)});
+

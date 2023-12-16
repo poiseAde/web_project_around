@@ -4,7 +4,7 @@
 
 **Deskripsi**
 
-Website ini adalah proyek ke 5 yang dikerjakan di bootcamp Tripleten. Pada saat ini web ini adalah sebuah halaman interaktif tempat pengguna dapat mengedit profil, damun pada kedepanya web ini akan menambahkan fitur untuk menambahkan, menghapus, atau menyukai foto. Pembuatan web ini mengaplikasikan pengetahuan yang didapat setelan menempuh 5 sprint di Tripleten, beberapa yang digunakan adalah flex, grid, form, media quary di CSS untuk mengatur tampilan halaman dan document object model dan function di java script untuk membuat pop-up. Website ini telah dibuat sedemikian rupa agar bisa ditampilkan di berbagai ukuran layar perangkat modern, dari resolusi 1280px hingga 320px.
+Website ini adalah proyek ke 5 yang dikerjakan di bootcamp Tripleten. Pada saat ini web ini adalah sebuah halaman interaktif tempat pengguna dapat mengedit profil, menambahkan, menghapus, dan menyukai foto. Pembuatan web ini mengaplikasikan pengetahuan yang didapat setelan menempuh 5 sprint di Tripleten, beberapa yang digunakan adalah flex, grid, form, media quary di CSS untuk mengatur tampilan halaman dan document object model dan function di java script untuk membuat pop-up. Website ini telah dibuat sedemikian rupa agar bisa ditampilkan di berbagai ukuran layar perangkat modern, dari resolusi 1280px hingga 320px.
 
 **link**
 

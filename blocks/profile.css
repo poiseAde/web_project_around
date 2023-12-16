@@ -7,7 +7,7 @@
     -ms-grid-columns: 120px 30px 415px 30px 285px;
     grid-template-columns: 120px 415px 285px;
     grid-gap: 30px;
-        grid-template-areas: 
+            grid-template-areas: 
     "avatar info add";
     -ms-grid-row-align: center;
         align-self: center;
@@ -22,7 +22,7 @@
     grid-template-rows: 1fr 1fr;
     -ms-grid-columns: 1fr 18px 24px;
     grid-template-columns: 1fr 24px;
-        grid-template-areas: 
+            grid-template-areas: 
     "name edit"
     "about about";
     grid-column-gap: 18px;
@@ -60,16 +60,21 @@
 }
 
 .profile__info-edit-button {
+    height: 24px;
+    width: 24px;
     -ms-grid-row: 1;
     -ms-grid-column: 3;
     grid-area: edit;
     -ms-grid-row-align: end;
         align-self: end;
-    background: none;
+    background: url(../images/edit_button.png);
+    background-size: contain;
+    background-repeat: no-repeat;
     border: none;
     -webkit-transition: opacity 0.2s linear;
     -o-transition: opacity 0.2s linear;
     transition: opacity 0.2s linear;
+    margin-bottom: 7px;
 }
 
 .profile__add-button {
@@ -77,7 +82,9 @@
     height: 50px;
     -ms-grid-column-align: end;
         justify-self: end;
-    background: none;
+    background: url(../images/add_button.png);
+    background-repeat: no-repeat;
+    background-position: center;
     border: 2px solid white;
     -webkit-transition: opacity 0.2s linear;
     -o-transition: opacity 0.2s linear;
@@ -145,6 +152,7 @@
     
     .profile__info-edit-button {
         width: 18px;
+        margin: 0;
     }
     
     .profile__add-button {
