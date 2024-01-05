@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Di Sekitar Amerika Serikat</title>
-    <link rel="stylesheet" href="pages/index.css">
-</head>
-<body class="page">
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
+  <body class="page">
     <header class="header">
-        <img src="images/logo.png" alt="logo Around The U.S." class="logo">
-        <div class="header__line"></div>
+      <img src="images/logo.png" alt="logo Around The U.S." class="logo" />
+      <div class="header__line"></div>
     </header>
     <main class="content">
-        <section class="profile">
-            <img src="images/avatar.png" alt="photo avatar" class="profile__info-avatar">
-            <div class="profile__info-container">
-                <h1 class="profile__info-name">Jaques Cousteau</h1>
-                <h2 class="profile__info-about">Penjelajah</h2>
-                <input type="button" class="profile__info-edit-button">
-            </div>
-            <input type="button" class="profile__add-button">
-        </section>
-        <section class="elements">
-            <div class="cards"></div>
-        </section>
+      <section class="profile">
+        <img src="images/avatar.png" alt="photo avatar" class="profile__info-avatar" />
+        <div class="profile__info-container">
+          <h1 class="profile__info-name">Jaques Cousteau</h1>
+          <h2 class="profile__info-about">Penjelajah</h2>
+          <input type="button" class="profile__info-edit-button" />
+        </div>
+        <input type="button" class="profile__add-button" />
+      </section>
+      <section class="elements">
+        <div class="cards"></div>
+      </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">&#169; 2021 Around The U.S.</p>
+      <p class="footer__copyright">&#169; 2021 Around The U.S.</p>
     </footer>
     <section class="popup-edit popup">
-        <article class="popup__container">
-            <h2 class="popup__title">Edit profil</h2>
-            <input type="text" placeholder="Nama" class="popup__input_name popup__input">
-            <input type="text" placeholder="Tentang" class="popup__input_about popup__input">
-            <input type="submit" value="Simpan" class="popup__edit-save-button popup__save-button">
-            <input type="button" class="popup__edit-close-button popup__close-button">
-        </article>
+      <article class="popup__container">
+        <h2 class="popup__title">Edit profil</h2>
+        <input type="text" placeholder="Nama" class="popup__input_name popup__input" />
+        <input type="text" placeholder="Tentang" class="popup__input_about popup__input" />
+        <input type="submit" value="Simpan" class="popup__edit-save-button popup__save-button" />
+        <input type="button" class="popup__edit-close-button popup__close-button" />
+      </article>
     </section>
     <section class="popup-add popup">
-        <article class="popup__container">
-            <h2 class="popup__title">Tempat baru</h2>
-            <input type="text" placeholder="Judul" class="popup__input_title popup__input">
-            <p class="popup__invalid-message">Silakan isi kolom ini.</p>
-            <input type="url" placeholder="URL Gambar" class="popup__input_url popup__input">
-            <p class="popup__invalid-message">Silakan masukkan alamat web.</p>
-            <input type= "submit" value="Simpan" class="popup__add-save-button popup__save-button">
-            <input type="button" class="popup__add-close-button popup__close-button">
-        </article>
+      <article class="popup__container">
+        <h2 class="popup__title">Tempat baru</h2>
+        <input type="text" placeholder="Judul" class="popup__input_title popup__input" />
+        <p class="popup__invalid-message">Silakan isi kolom ini.</p>
+        <input type="url" placeholder="URL Gambar" class="popup__input_url popup__input" />
+        <p class="popup__invalid-message">Silakan masukkan alamat web.</p>
+        <input type="submit" value="Simpan" class="popup__add-save-button popup__save-button" />
+        <input type="button" class="popup__add-close-button popup__close-button" />
+      </article>
     </section>
     <section class="popup-card popup">
-        <article class="popup__card-container">
-            <img src=" " alt="" class="popup__card-image">
-            <h2 class="popup__card-title"></h2>
-            <input type="button" class="popup__card-close-button popup__close-button">
-        </article>
+      <article class="popup__card-container">
+        <img src=" " alt="" class="popup__card-image" />
+        <h2 class="popup__card-title"></h2>
+        <input type="button" class="popup__card-close-button popup__close-button" />
+      </article>
     </section>
     <template class="card-template">
-        <article class="card">
-            <img src=" " alt="" class="card__image">
-            <h2 class="card__title"></h2>
-            <input type="button" class="card__like-button">
-            <input type="button" class="card__delete-button">
-        </article>
+      <article class="card">
+        <img src=" " alt="" class="card__image" />
+        <h2 class="card__title"></h2>
+        <input type="button" class="card__like-button" />
+        <input type="button" class="card__delete-button" />
+      </article>
     </template>
     <script src="scripts/index.js"></script>
-</body>
+  </body>
 </html>
